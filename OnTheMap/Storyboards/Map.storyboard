@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="djg-PQ-JXk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="zq1-xV-Gth">
+            <objects>
+                <navigationController storyboardIdentifier="UINavigationController" id="djg-PQ-JXk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="icon_mapview-selected" id="lxA-NR-0FL">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6PI-sc-Tch">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pbc-Ws-nag" kind="relationship" relationship="rootViewController" id="DZI-h8-YXa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="peN-t0-RK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2268" y="-188"/>
+        </scene>
+        <!--On the Map-->
+        <scene sceneID="nUB-O6-bEN">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="pbc-Ws-nag" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m5P-55-LC7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1Rv-Dq-ZxM"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="On the Map" id="6U6-Gx-xul">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="3TN-YJ-gpF">
+                            <connections>
+                                <action selector="onLogout:" destination="pbc-Ws-nag" id="U5n-pp-AdF"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="4Lr-ky-d05">
+                                <connections>
+                                    <action selector="onAdd:" destination="pbc-Ws-nag" id="tLe-if-oCo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="OVX-1x-Tgd">
+                                <connections>
+                                    <action selector="onRefresh:" destination="pbc-Ws-nag" id="BqS-fW-Wic"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oZf-Cp-CYM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3186" y="-188"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_mapview-selected" width="75" height="50"/>
+    </resources>
+</document>
