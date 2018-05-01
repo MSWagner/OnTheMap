@@ -1,8 +1,8 @@
-github "ReactiveCocoa/ReactiveCocoa" ~> 7.1
+github "ReactiveCocoa/ReactiveCocoa" ~> 7.2
 github "mbuchetics/DataSource" ~> 5.1
 
 github "aschuch/StatefulViewController"
-github "pkluz/PKHUD" ~> 4.0
+github "pkluz/PKHUD" ~> 5.0
 github "aloco/SimpleButton" ~> 3.0
 github "ashleymills/Reachability.swift"
 
