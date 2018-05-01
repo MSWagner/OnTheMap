@@ -19,6 +19,7 @@ class TableViewController: UIViewController {
 
     // MARK: - Properties
 
+    private let refreshControl = UIRefreshControl()
     var viewModel: LocationViewModel!
 
     lazy var dataSource: DataSource = {
@@ -57,7 +58,17 @@ class TableViewController: UIViewController {
         let parentTabBar = tabBarController as! MainTabBarController
         viewModel = parentTabBar.viewModel
 
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshStudentInformations), for: .valueChanged)
         bindViewModel()
+    }
+
+    // MARK: Refresh Control
+
+    @objc private func refreshStudentInformations() {
+        viewModel.refreshStudentLocations.apply().startWithResult { [weak self] _ in
+            self?.refreshControl.endRefreshing()
+        }
     }
 
     // MARK: - Datasource
