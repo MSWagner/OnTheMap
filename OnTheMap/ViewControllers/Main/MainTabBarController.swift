@@ -26,7 +26,6 @@ class MainTabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-
         if !UserController.hasValidSession {
             print("No valid session")
             goToAuth()

@@ -13,5 +13,6 @@ struct Appearance {
         UINavigationBar.appearance().barTintColor = UIColor(red:0.38, green:0.71, blue:0.98, alpha:1.0)
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UIApplication.shared.statusBarStyle = .lightContent
     }
 }
