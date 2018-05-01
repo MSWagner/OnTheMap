@@ -15,7 +15,7 @@ struct User: Codable {
 
 struct Account: Codable {
     let key: String
-    let registered: Int
+    let registered: Bool
 }
 
 struct Session: Codable {

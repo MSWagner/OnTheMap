@@ -13,12 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        UserController.shared.deleteCedentials()
+        Appearance.setup()
 
-        if !UserController.shared.isValidSession {
+        if !UserController.hasValidSession {
             print("No valid session")
 
             let authViewController: LoginViewController = UIStoryboard(.auth).instantiateViewController()

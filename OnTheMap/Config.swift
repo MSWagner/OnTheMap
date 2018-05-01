@@ -10,6 +10,8 @@ import Foundation
 
 struct Config {
 
+    static let keyPrefix = "com.mwswagner.onthemap"
+
     struct API {
         static let APIKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
         static let ParseAppID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
@@ -18,7 +20,6 @@ struct Config {
     }
 
     struct Keychain {
-        static let Service = "com.mwswagner.onthemap"
-        static let CredentialsStorageKey = "Credentials"
+        static let credentialsStorageKey = "Credentials"
     }
 }

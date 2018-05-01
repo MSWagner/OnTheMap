@@ -15,9 +15,9 @@ import SimpleButton
 
 class LoginViewController: UIViewController {
 
-    // MARK: - Outlets
+    // MARK: - IBOutlets
 
-    @IBOutlet weak var loginButton: LoginButton!
+    @IBOutlet weak var loginButton: DesignableButton!
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
 
@@ -47,7 +47,6 @@ class LoginViewController: UIViewController {
                 }
                 self.loginButton.isEnabled = false
         }
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,21 +76,15 @@ class LoginViewController: UIViewController {
     // MARK: - Navigation
 
     private func goToMain() {
-        let mainTabbarViewController: UITabBarController = UIStoryboard(.main).instantiateViewController()
+        let mainTabbarViewController: UINavigationController = UIStoryboard(.main).instantiateViewController()
         setRootViewController(mainTabbarViewController)
     }
 
     // MARK: - IBActions
 
     @IBAction func onSignIn(_ sender: Any) {
-        HUD.show(.progress)
-
-        guard let email = emailTextfield.text, !email.isEmpty else {
-            HUD.flash(.error, delay: 0.5)
-            return
-        }
-
-        guard let password = passwordTextfield.text, !email.isEmpty else {
+        guard let email = emailTextfield.text, !email.isEmpty,
+                let password = passwordTextfield.text, !password.isEmpty else {
             HUD.flash(.error, delay: 0.5)
             return
         }
@@ -105,22 +98,28 @@ class LoginViewController: UIViewController {
         UIApplication.shared.open(url, options: [:])
     }
 
-    // MARK: Login
+    // MARK: - Login
 
     private func login(credentials: LoginCredentials) {
-        UserController.shared.login.apply(credentials).start() { [weak self] result in
+        loginButton.isLoading = true
+
+        UserController.shared.login.apply(credentials).startWithResult { [weak self] (result) in
             guard let `self` = self else { return }
 
+            self.loginButton.isLoading = false
+
             switch result {
-            case let .failed(error):
-                if case .producerFailed(let error) = error {
-                    HUD.flash(.label(error.localizedError), delay: 1.0)
-                }
-            case .completed:
+            case .success(_):
                 HUD.flash(.success, delay: 0.5)
                 self.goToMain()
-            default:
-                HUD.flash(.error, delay: 0.5)
+
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+                if case .producerFailed(let error) = error {
+                    HUD.flash(.label(error.localizedError), delay: 1.0)
+                } else {
+                    HUD.flash(.error, delay: 0.5)
+                }
             }
         }
     }

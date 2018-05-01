@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D303498F2090FB4A00BF8650 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D303498E2090FB4A00BF8650 /* DesignableButton.swift */; };
 		D30DC8251FDD856500432443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30DC8241FDD856500432443 /* AppDelegate.swift */; };
 		D30DC8271FDD856500432443 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30DC8261FDD856500432443 /* LoginViewController.swift */; };
 		D30DC82A1FDD856500432443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30DC8281FDD856500432443 /* Main.storyboard */; };
@@ -14,6 +15,14 @@
 		D30DC82F1FDD856500432443 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30DC82D1FDD856500432443 /* LaunchScreen.storyboard */; };
 		D3413FD8204AA74400AEEC74 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = D3413FD7204AA74300AEEC74 /* Cartfile */; };
 		D3413FDA204AD95100AEEC74 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3413FD9204AD95100AEEC74 /* Config.swift */; };
+		D3624E0F2098D38A0086EFD9 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E0E2098D38A0086EFD9 /* LocationViewModel.swift */; };
+		D3624E112098D4B40086EFD9 /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E102098D4B40086EFD9 /* StudentViewModel.swift */; };
+		D3624E152098DE030086EFD9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E142098DE030086EFD9 /* TableViewController.swift */; };
+		D3624E182098E08A0086EFD9 /* StudentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3624E172098E08A0086EFD9 /* StudentCell.xib */; };
+		D3624E1A2098E0B60086EFD9 /* StudentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E192098E0B60086EFD9 /* StudentCell.swift */; };
+		D3624E1C2098E7E00086EFD9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E1B2098E7E00086EFD9 /* Appearance.swift */; };
+		D3624E1E2098F05C0086EFD9 /* StudentAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E1D2098F05C0086EFD9 /* StudentAnnotation.swift */; };
+		D3624E212098FA0A0086EFD9 /* StudentAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E202098FA0A0086EFD9 /* StudentAnnotationView.swift */; };
 		D37C115B1FE11A0400020631 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115A1FE11A0400020631 /* APIClient.swift */; };
 		D37C115D1FE11A2200020631 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115C1FE11A2200020631 /* API.swift */; };
 		D37C115F1FE14B5200020631 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115E1FE14B5200020631 /* StudentInformation.swift */; };
@@ -33,19 +42,22 @@
 		D38A180D204F08BA000F8619 /* SimpleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38A1802204F08BA000F8619 /* SimpleButton.framework */; };
 		D38A180F204F1308000F8619 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A180E204F1308000F8619 /* APIError.swift */; };
 		D38A1811204F13B6000F8619 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A1810204F13B6000F8619 /* Strings.swift */; };
+		D3C868F520923CF100CC3071 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C868F420923CF100CC3071 /* Decoders.swift */; };
+		D3C868F7209245B400CC3071 /* AnyError+APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C868F6209245B400CC3071 /* AnyError+APIError.swift */; };
 		D3E4AA6C205E98E80038752E /* UdacityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA6B205E98E80038752E /* UdacityError.swift */; };
 		D3E4AA6E205EB89F0038752E /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E4AA6D205EB89F0038752E /* Auth.storyboard */; };
 		D3E4AA70205EB8F40038752E /* StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA6F205EB8F40038752E /* StoryBoard.swift */; };
 		D3E4AA72205EB97D0038752E /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E4AA71205EB97D0038752E /* Map.storyboard */; };
 		D3E4AA74205EBA100038752E /* Table.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3E4AA73205EBA100038752E /* Table.storyboard */; };
 		D3E4AA77205ECD3F0038752E /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA76205ECD3F0038752E /* Formatters.swift */; };
-		D3E4AA7E205EEB2F0038752E /* MainRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA7D205EEB2F0038752E /* MainRootViewController.swift */; };
+		D3E4AA7E205EEB2F0038752E /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA7D205EEB2F0038752E /* MainTabBarController.swift */; };
 		D3E4AA81205EEB670038752E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA80205EEB670038752E /* MapViewController.swift */; };
 		D3E4AA84205EECFD0038752E /* ViewController+AnimateRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA83205EECFD0038752E /* ViewController+AnimateRootViewController.swift */; };
 		D3E4AA86205EF5BF0038752E /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA85205EF5BF0038752E /* LoginButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D303498E2090FB4A00BF8650 /* DesignableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableButton.swift; sourceTree = "<group>"; };
 		D30DC8211FDD856500432443 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D30DC8241FDD856500432443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D30DC8261FDD856500432443 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +67,14 @@
 		D30DC8301FDD856500432443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3413FD7204AA74300AEEC74 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		D3413FD9204AD95100AEEC74 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		D3624E0E2098D38A0086EFD9 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		D3624E102098D4B40086EFD9 /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
+		D3624E142098DE030086EFD9 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		D3624E172098E08A0086EFD9 /* StudentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StudentCell.xib; sourceTree = "<group>"; };
+		D3624E192098E0B60086EFD9 /* StudentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCell.swift; sourceTree = "<group>"; };
+		D3624E1B2098E7E00086EFD9 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		D3624E1D2098F05C0086EFD9 /* StudentAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAnnotation.swift; sourceTree = "<group>"; };
+		D3624E202098FA0A0086EFD9 /* StudentAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAnnotationView.swift; sourceTree = "<group>"; };
 		D37C115A1FE11A0400020631 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		D37C115C1FE11A2200020631 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D37C115E1FE14B5200020631 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
@@ -74,13 +94,15 @@
 		D38A1802204F08BA000F8619 /* SimpleButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleButton.framework; path = Build/iOS/SimpleButton.framework; sourceTree = "<group>"; };
 		D38A180E204F1308000F8619 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		D38A1810204F13B6000F8619 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		D3C868F420923CF100CC3071 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
+		D3C868F6209245B400CC3071 /* AnyError+APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyError+APIError.swift"; sourceTree = "<group>"; };
 		D3E4AA6B205E98E80038752E /* UdacityError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityError.swift; sourceTree = "<group>"; };
 		D3E4AA6D205EB89F0038752E /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		D3E4AA6F205EB8F40038752E /* StoryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoard.swift; sourceTree = "<group>"; };
 		D3E4AA71205EB97D0038752E /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		D3E4AA73205EBA100038752E /* Table.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Table.storyboard; sourceTree = "<group>"; };
 		D3E4AA76205ECD3F0038752E /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
-		D3E4AA7D205EEB2F0038752E /* MainRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRootViewController.swift; sourceTree = "<group>"; };
+		D3E4AA7D205EEB2F0038752E /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D3E4AA80205EEB670038752E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D3E4AA83205EECFD0038752E /* ViewController+AnimateRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+AnimateRootViewController.swift"; sourceTree = "<group>"; };
 		D3E4AA85205EF5BF0038752E /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
@@ -133,6 +155,7 @@
 			children = (
 				D30DC8241FDD856500432443 /* AppDelegate.swift */,
 				D3413FD9204AD95100AEEC74 /* Config.swift */,
+				D3624E1B2098E7E00086EFD9 /* Appearance.swift */,
 				D38A1810204F13B6000F8619 /* Strings.swift */,
 				D3413FD3204AA63700AEEC74 /* Storyboards */,
 				D30DC8381FDD85B400432443 /* ViewControllers */,
@@ -151,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				D37C115E1FE14B5200020631 /* StudentInformation.swift */,
+				D3624E1D2098F05C0086EFD9 /* StudentAnnotation.swift */,
 				D37C11601FE28ADC00020631 /* User.swift */,
 				D3E4AA6B205E98E80038752E /* UdacityError.swift */,
 			);
@@ -160,6 +184,8 @@
 		D30DC8371FDD85AD00432443 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D3624E1F2098F9F30086EFD9 /* Map */,
+				D3624E162098E0730086EFD9 /* Table */,
 				D3E4AA85205EF5BF0038752E /* LoginButton.swift */,
 			);
 			path = Views;
@@ -168,9 +194,10 @@
 		D30DC8381FDD85B400432443 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D3E4AA7C205EEB090038752E /* Main */,
 				D3E4AA78205EE7AE0038752E /* Auth */,
-				D3E4AA7F205EEB540038752E /* Map */,
+				D3E4AA7C205EEB090038752E /* Main */,
+				D3624E122098DD880086EFD9 /* Map */,
+				D3624E132098DD980086EFD9 /* Table */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -207,6 +234,8 @@
 		D3413FD6204AA68F00AEEC74 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D3624E0E2098D38A0086EFD9 /* LocationViewModel.swift */,
+				D3624E102098D4B40086EFD9 /* StudentViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -227,6 +256,39 @@
 				D38A17FA204F08BA000F8619 /* StatefulViewController.framework */,
 			);
 			path = Carthage;
+			sourceTree = "<group>";
+		};
+		D3624E122098DD880086EFD9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4AA80205EEB670038752E /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		D3624E132098DD980086EFD9 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				D3624E142098DE030086EFD9 /* TableViewController.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		D3624E162098E0730086EFD9 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				D3624E172098E08A0086EFD9 /* StudentCell.xib */,
+				D3624E192098E0B60086EFD9 /* StudentCell.swift */,
+			);
+			path = Table;
+			sourceTree = "<group>";
+		};
+		D3624E1F2098F9F30086EFD9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D3624E202098FA0A0086EFD9 /* StudentAnnotationView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		D37C11591FE10E1600020631 /* Networking */ = {
@@ -251,6 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				D3E4AA76205ECD3F0038752E /* Formatters.swift */,
+				D303498E2090FB4A00BF8650 /* DesignableButton.swift */,
+				D3C868F420923CF100CC3071 /* Decoders.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -267,23 +331,16 @@
 		D3E4AA7C205EEB090038752E /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D3E4AA7D205EEB2F0038752E /* MainRootViewController.swift */,
+				D3E4AA7D205EEB2F0038752E /* MainTabBarController.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		D3E4AA7F205EEB540038752E /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				D3E4AA80205EEB670038752E /* MapViewController.swift */,
-			);
-			path = Map;
 			sourceTree = "<group>";
 		};
 		D3E4AA82205EECCD0038752E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				D3E4AA83205EECFD0038752E /* ViewController+AnimateRootViewController.swift */,
+				D3C868F6209245B400CC3071 /* AnyError+APIError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -316,7 +373,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Michael Wagner";
 				TargetAttributes = {
 					D30DC8201FDD856500432443 = {
@@ -355,6 +412,7 @@
 				D3413FD8204AA74400AEEC74 /* Cartfile in Resources */,
 				D30DC82A1FDD856500432443 /* Main.storyboard in Resources */,
 				D3E4AA72205EB97D0038752E /* Map.storyboard in Resources */,
+				D3624E182098E08A0086EFD9 /* StudentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,20 +454,30 @@
 				D38A17E1204EFD78000F8619 /* UserController.swift in Sources */,
 				D3E4AA86205EF5BF0038752E /* LoginButton.swift in Sources */,
 				D38A1811204F13B6000F8619 /* Strings.swift in Sources */,
+				D3624E212098FA0A0086EFD9 /* StudentAnnotationView.swift in Sources */,
 				D3E4AA70205EB8F40038752E /* StoryBoard.swift in Sources */,
+				D3624E1E2098F05C0086EFD9 /* StudentAnnotation.swift in Sources */,
 				D30DC8271FDD856500432443 /* LoginViewController.swift in Sources */,
+				D3624E0F2098D38A0086EFD9 /* LocationViewModel.swift in Sources */,
 				D30DC8251FDD856500432443 /* AppDelegate.swift in Sources */,
 				D38A180F204F1308000F8619 /* APIError.swift in Sources */,
-				D3E4AA7E205EEB2F0038752E /* MainRootViewController.swift in Sources */,
+				D3E4AA7E205EEB2F0038752E /* MainTabBarController.swift in Sources */,
 				D37C11631FE2B56500020631 /* SignUpWebVC.swift in Sources */,
+				D3C868F7209245B400CC3071 /* AnyError+APIError.swift in Sources */,
 				D3E4AA6C205E98E80038752E /* UdacityError.swift in Sources */,
 				D37C11611FE28ADC00020631 /* User.swift in Sources */,
 				D37C115D1FE11A2200020631 /* API.swift in Sources */,
 				D3E4AA77205ECD3F0038752E /* Formatters.swift in Sources */,
+				D3624E1A2098E0B60086EFD9 /* StudentCell.swift in Sources */,
 				D3413FDA204AD95100AEEC74 /* Config.swift in Sources */,
+				D3624E1C2098E7E00086EFD9 /* Appearance.swift in Sources */,
+				D3624E112098D4B40086EFD9 /* StudentViewModel.swift in Sources */,
 				D37C115F1FE14B5200020631 /* StudentInformation.swift in Sources */,
 				D37C115B1FE11A0400020631 /* APIClient.swift in Sources */,
+				D3624E152098DE030086EFD9 /* TableViewController.swift in Sources */,
+				D303498F2090FB4A00BF8650 /* DesignableButton.swift in Sources */,
 				D3E4AA84205EECFD0038752E /* ViewController+AnimateRootViewController.swift in Sources */,
+				D3C868F520923CF100CC3071 /* Decoders.swift in Sources */,
 				D3E4AA81205EEB670038752E /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +518,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -457,6 +526,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -484,7 +554,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -507,6 +577,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -514,6 +585,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -535,7 +607,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -552,10 +624,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(inherited)",
-					"$(PROJECT_DIR)/OnTheMap/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.mwswagner.onthemap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -573,10 +644,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(inherited)",
-					"$(PROJECT_DIR)/OnTheMap/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.mwswagner.onthemap;
 				PRODUCT_NAME = "$(TARGET_NAME)";

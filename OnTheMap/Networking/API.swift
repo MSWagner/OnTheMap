@@ -10,14 +10,12 @@ import Foundation
 
 enum API {
 
-    // MARK: Auth
-
+    // Auth
     case postSession(email: String, password: String)
     case deleteSession
     case signUp
 
-    // MARK: Location
-
+    // Location
     case getStudentLocations(limit: Int?, skip: Int?, order: String?)
     case getStudentLocation
     case postStudentLocation(location: StudentInformation)
@@ -51,10 +49,10 @@ extension API {
         case .getStudentLocations,
              .getStudentLocation,
              .postStudentLocation:
-            return "parse/classes/StudentLocation"
+            return "/parse/classes/StudentLocation"
 
         case .putStudentLocation(_ , let objectID):
-            return "parse/classes/StudentLocation/\(objectID)"
+            return "/parse/classes/StudentLocation/\(objectID)"
         }
     }
 
@@ -75,11 +73,17 @@ extension API {
             if let parameters = parameters {
                 for (key, value) in parameters {
                     let queryItem = URLQueryItem(name: key, value: "\(value)")
+//                    print("QueryItem: \(queryItem.name) \(queryItem.value)")
                     components.queryItems!.append(queryItem)
                 }
             }
         default: break
         }
+
+//        print("Query: \(components.query)")
+//        print("URL: \(components.url)")
+//        print(components.debugDescription)
+//        print(components.string)
         return components.url!
     }
 
@@ -105,6 +109,25 @@ extension API {
                 "Content-Type": "application/json"
             ]
 
+        case .deleteSession:
+            var xsrfCookie: HTTPCookie? = nil
+            let sharedCookieStorage = HTTPCookieStorage.shared
+            for cookie in sharedCookieStorage.cookies! {
+                if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+            }
+
+            return [
+                "X-XSRF-TOKEN": xsrfCookie?.value ?? ""
+            ]
+
+        case .getStudentLocations,
+             .getStudentLocation:
+
+            return [
+                "X-Parse-Application-Id": Config.API.ParseAppID,
+                "X-Parse-REST-API-Key": Config.API.APIKey
+            ]
+
         default: return nil
         }
     }
@@ -112,8 +135,8 @@ extension API {
     var parameters: [String: Any]? {
         switch self {
 
-        case .getStudentLocations:
-            return ["limit": 100, "skip": 400]
+        case .getStudentLocations(let limit, _, _):
+            return ["limit": limit ?? 100]
 
         case .getStudentLocation:
             return ["where": ["uniqueKey": 123]]
@@ -147,7 +170,7 @@ extension API {
 
     var request: URLRequest {
         var request = URLRequest(url: url)
-        request.httpMethod = method.string
+        request.httpMethod = method.rawValue
 
         if let headers = headers {
             for header in headers {
@@ -162,27 +185,21 @@ extension API {
         return request
     }
 
-    func addApiKeyAndIDToHeader(headerField: [String: String]) -> [String: String] {
-        var tempHeaderField = headerField
-        tempHeaderField[Config.API.ParseAppID] = "X-Parse-Application-Id"
-        tempHeaderField[Config.API.APIKey] = "X-Parse-REST-API-Key"
-        return tempHeaderField
+    var shouldSkipFirst5Chars: Bool {
+        switch self {
+        case .deleteSession,
+             .postSession:
+            return true
+        default:
+            return false
+        }
     }
 }
 
-enum HTTPMethod {
-    case get
-    case post
-    case put
-    case delete
-
-    var string: String {
-        switch self {
-        case .get: return "GET"
-        case .post: return "POST"
-        case .put: return "PUT"
-        case .delete: return "DELETE"
-        }
-    }
+enum HTTPMethod: String {
+    case get = "GET"
+    case post = "POST"
+    case put = "PUT"
+    case delete = "DELETE"
 }
 

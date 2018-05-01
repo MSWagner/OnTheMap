@@ -19,68 +19,54 @@ enum UserState {
     case loggedIn
 }
 
-class UserController {
-
-    private init() {
-
-        if let keychainComponents = keychain[credentialStorageKey]?.components(separatedBy: "*"),
-            keychainComponents.count == 2,
-            let sessionID = keychainComponents.first,
-            let expirationString = keychainComponents.last,
-            let expirationDate = Formatters.isoDateFormatter.date(from: expirationString) {
-
-            if expirationDate > Date() {
-                print("Cached Session is not expired")
-                cachedSession = Session(expiration: expirationDate, id: sessionID)
-                return
-            }
-        }
-
-        cachedSession = nil
-    }
+class UserController: NSObject {
 
     static let shared = UserController()
 
-    private var cachedSession: Session?
+    // MARK: Static
 
-    private let credentialStorageKey = Config.Keychain.CredentialsStorageKey
-    private let keychain = Keychain(service: Config.Keychain.Service)
+    fileprivate static let keychain = Keychain(service: Config.keyPrefix)
+    fileprivate static let userStorageKey = Config.Keychain.credentialsStorageKey
+    fileprivate static var cachedUser: User?
 
-    private let _currentUser = MutableProperty<User?>(nil)
-    lazy var currentUser: Property<User?> = {
-        return Property(self._currentUser)
-    }()
+    static var currentUser: User? {
+        get {
+            if let userKeychain = keychain[data: userStorageKey],
+                let userData = NSKeyedUnarchiver.unarchiveObject(with: userKeychain) as? Data, cachedUser == nil,
+                let user = try? JSONDecoder().decode(User.self, from: userData) {
+                cachedUser = user
+                return user
+            } else {
+                return cachedUser
+            }
+        }
+        set {
+            if let user = newValue {
+                let userData = try! JSONEncoder().encode(user)
+                keychain[data: userStorageKey] = NSKeyedArchiver.archivedData(withRootObject: userData)
+                cachedUser = user
+            } else {
+                cachedUser = nil
+                _ = try? keychain.remove(userStorageKey)
+            }
+        }
+    }
 
-    var isValidSession: Bool {
-        if let expirationDate = cachedSession?.expiration,
-            expirationDate > Date() {
-            return true
+    static var hasValidSession: Bool {
+        if let currentUser = currentUser {
+            let expirationDate = currentUser.session.expiration
+            return expirationDate > Date()
         } else {
-            deleteCedentials()
             return false
         }
     }
 
-    var userSessionId: String? {
-        return cachedSession?.id
+    static func deleteCredentials() {
+        UserController.shared.logout.apply().start()
+        currentUser = nil
     }
 
-    var userState: UserState {
-        if userSessionId == nil { return .noHash }
-        return _currentUser.value == nil ? .notYetLoggedIn : .loggedIn
-    }
-
-    func saveCredentials(user: User) {
-        cachedSession = user.session
-        keychain[credentialStorageKey] = user.session.id + "*" + Formatters.isoDateFormatter.string(from: user.session.expiration)
-        _currentUser.value = user
-    }
-
-    func deleteCedentials() {
-        keychain[credentialStorageKey] = nil
-        cachedSession = nil
-        _currentUser.value = nil
-    }
+    // MARK: - Auth Functions
 
     lazy var login: Action<LoginCredentials, User, APIError> = {
         return Action { (credentials) in
@@ -88,12 +74,16 @@ class UserController {
             let (email, password) = credentials
             return APIClient
                 .request(.postSession(email: email, password: password), type: User.self)
-                .on(value: { [weak self] user in
-                    guard let `self` = self else { return }
+                .on(value: { user in
                     print("Credential saved")
-
-                    self.saveCredentials(user: user)
+                    UserController.currentUser = user
                 })
+        }
+    }()
+
+    lazy var logout: Action<Void, RequestResponse, APIError> = {
+        return Action {
+            return APIClient.request(.deleteSession)
         }
     }()
 }

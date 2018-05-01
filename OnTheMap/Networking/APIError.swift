@@ -27,7 +27,8 @@ enum APIError: Swift.Error {
         switch self {
         case .underlying(let error):
             print("underlying")
-            return error.localizedDescription
+            let nsError = error as NSError
+            return nsError.localizedDescription
         case .udacityError(let error):
             print("udacityError")
             return error.error

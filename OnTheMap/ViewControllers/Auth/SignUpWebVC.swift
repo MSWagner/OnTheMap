@@ -11,7 +11,8 @@ import WebKit
 
 class SignUpWebVC: UIViewController {
 
-    // MARK: - Outlets
+    // MARK: - IBOutlets
+
     @IBOutlet weak var webView: WKWebView!
     
     // MARK: - Properties
@@ -44,7 +45,7 @@ class SignUpWebVC: UIViewController {
 }
 
 // MARK: - WKNavigationDelegate
-extension SignUpWebVC: WKNavigationDelegate {
 
+extension SignUpWebVC: WKNavigationDelegate {
 
 }

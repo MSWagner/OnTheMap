@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct StudentInformations: Codable {
+    var results: [StudentInformation]
+}
+
 struct StudentInformation: Codable {
     var objectId: String
 
@@ -15,11 +19,11 @@ struct StudentInformation: Codable {
 
     var firstName: String
     var lastName: String
-    var mapString: String
-    var mediaURL: String
+    var mapString: String?
+    var mediaURL: String?
 
-    var latitude: Double
-    var longitude: Double
+    var latitude: Double?
+    var longitude: Double?
 
     var createdAt: Date
     var updatedAt: Date

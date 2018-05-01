@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="6eE-TG-qmB" customClass="StudentCell" customModule="OnTheMap" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6eE-TG-qmB" id="aBo-wB-xrp">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pin" translatesAutoresizingMaskIntoConstraints="NO" id="fgB-xj-HWV">
+                        <rect key="frame" x="5" y="5" width="60" height="59.5"/>
+                        <color key="tintColor" red="0.37647058820000001" green="0.71372549019999998" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="CiW-ZN-9bw"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{Name}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pQ-Ua-Ckt">
+                        <rect key="frame" x="80" y="0.0" width="279" height="39.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{URL}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTU-pC-TPL">
+                        <rect key="frame" x="80" y="39.5" width="279" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Ery-Ms-Dnn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="1pQ-Ua-Ckt" secondAttribute="trailing" id="4aO-Xd-bAM"/>
+                    <constraint firstAttribute="bottom" secondItem="lTU-pC-TPL" secondAttribute="bottom" constant="5" id="60P-Av-V0G"/>
+                    <constraint firstItem="lTU-pC-TPL" firstAttribute="top" secondItem="1pQ-Ua-Ckt" secondAttribute="bottom" id="ILe-Vc-zJu"/>
+                    <constraint firstAttribute="bottom" secondItem="fgB-xj-HWV" secondAttribute="bottom" constant="5" id="JjP-2T-cUn"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lTU-pC-TPL" secondAttribute="trailing" id="NQ9-Kw-Hnx"/>
+                    <constraint firstItem="fgB-xj-HWV" firstAttribute="top" secondItem="aBo-wB-xrp" secondAttribute="top" constant="5" id="ihw-Iu-jno"/>
+                    <constraint firstItem="1pQ-Ua-Ckt" firstAttribute="leading" secondItem="fgB-xj-HWV" secondAttribute="trailing" constant="15" id="j1X-HZ-i54"/>
+                    <constraint firstItem="lTU-pC-TPL" firstAttribute="leading" secondItem="fgB-xj-HWV" secondAttribute="trailing" constant="15" id="jZK-8M-vW5"/>
+                    <constraint firstItem="1pQ-Ua-Ckt" firstAttribute="top" secondItem="aBo-wB-xrp" secondAttribute="top" id="krI-Du-axg"/>
+                    <constraint firstItem="fgB-xj-HWV" firstAttribute="leading" secondItem="aBo-wB-xrp" secondAttribute="leading" constant="5" id="mUh-b1-n0Z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="1pQ-Ua-Ckt" id="N3C-my-DpY"/>
+                <outlet property="urlLabel" destination="lTU-pC-TPL" id="RC4-31-j6c"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="71"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_pin" width="24" height="24"/>
+    </resources>
+</document>

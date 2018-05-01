@@ -12,6 +12,7 @@ import ReactiveSwift
 import Result
 import Reachability
 
+typealias RequestResponse = (Data, URLResponse)
 class APIClient {
 
     static let shared: APIClient = APIClient()
@@ -23,47 +24,80 @@ class APIClient {
 
     // MARK: - Request
 
+    static func request(_ target: API) -> SignalProducer<RequestResponse, APIError> {
+
+        return proveReachability(reachability: reachability)
+            .flatMap(.latest) { _ -> SignalProducer<RequestResponse, APIError> in
+
+                return session.reactive
+                    .data(with: target.request)
+                    .retry(upTo: 2)
+//                    .observe(on: QueueScheduler())
+//                    .map { _ in () }
+                    .mapError { $0.toAPIError() }
+                    .observe(on: UIScheduler())
+        }
+    }
+
     static func request<T: Decodable>(_ target: API, type: T.Type) -> SignalProducer<T, APIError> {
-        return session.reactive
-            .data(with: target.request)
-            .retry(upTo: 2)
-            .observe(on: QueueScheduler())
-            .attemptMap { (data, response) -> T in
 
-                do {
-                    guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
-                        throw APIError.invalidURLResponse
+        return proveReachability(reachability: reachability)
+            .flatMap(.latest) { _ -> SignalProducer<T, APIError> in
+
+                return session.reactive
+                    .data(with: target.request)
+                    .retry(upTo: 2)
+                    .observe(on: QueueScheduler())    
+                    .attemptMap { (data, response) -> T in
+
+                        do {
+                            guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+                                throw APIError.invalidURLResponse
+                            }
+
+                            // Security reasons from udacity
+                            var tempData = data
+                            if target.shouldSkipFirst5Chars {
+                                let range = Range(5..<data.count)
+                                tempData = data.subdata(in: range)
+                            }
+
+//                            let json = try JSONSerialization.jsonObject(with: tempData) as? [String: Any]
+                            let decoder = JSONDecoder()
+                            decoder.dateDecodingStrategy = .formatted(Formatters.isoDateFormatter)
+
+                            print(String(data: tempData, encoding: .utf8)!)
+//                            print("JSON: \(json.debugDescription)")
+
+                            if statusCode < 200 || statusCode >= 300 {
+                                let decodedError = try decoder.decode(UdacityError.self, from: tempData as Data)
+
+                                throw APIError.udacityError(decodedError)
+                            }
+
+                            let decodedData = try decoder.decode(T.self, from: tempData as Data)
+                            return decodedData
+                        }
                     }
+                    .mapError {
+                        print($0.error)
+                        return $0.toAPIError()
 
-                    // Security reasons from udacity
-                    let range = Range(5..<data.count)
-                    let newData = data.subdata(in: range)
-
-                    let json = try JSONSerialization.jsonObject(with: newData) as? [String: Any]
-                    let decoder = JSONDecoder()
-                    decoder.dateDecodingStrategy = .formatted(Formatters.isoDateFormatter)
-
-                    print(String(data: newData, encoding: .utf8)!)
-                    print("JSON: \(json.debugDescription)")
-
-                    if statusCode < 200 || statusCode >= 300 {
-                        let decodedError = try decoder.decode(UdacityError.self, from: newData as Data)
-
-                        throw APIError.udacityError(decodedError)
                     }
-
-                    let decodedData = try decoder.decode(T.self, from: newData as Data)
-                    return decodedData
-                }
+                    .observe(on: UIScheduler())
             }
-            .mapError {
-                if let apiError = $0.error as? APIError {
-                    return apiError
-                }
+    }
 
-                return APIError.underlying($0)
+    static func proveReachability(reachability: Reachability?) -> SignalProducer<Void, APIError> {
+        return SignalProducer<Void, APIError> { (sink, _) in
+            if let reachability = reachability,
+                reachability.connection == .cellular || reachability.connection == .wifi {
+                sink.send(value: ())
+                sink.sendCompleted()
+            } else {
+                sink.send(error: APIError.noConnection)
             }
-            .observe(on: UIScheduler())
+        }
     }
 }
 

@@ -23,6 +23,10 @@ public struct Strings {
         static let errorWrongCredentials = Strings.localized("network_error_wrong_credentials", value: "You entered an incorrect username or a wrong password. Please try again.")
     }
 
+    public struct StudentInformation {
+        static let errorMediaUrl = Strings.localized("studentinformation_error_media_url", value: "The user hasn't a valid url")
+    }
+
     // settings this closure allows you to use a custom localization provider, such as OneSky over-the-air
     // by default, NSLocalizedString will load the strings from the main bundle's Localizable.strings file
     public static var customLocalizationClosure: ((String, String?, Bundle, String, String) -> String)? = nil
