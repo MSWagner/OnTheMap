@@ -13,7 +13,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import SimpleButton
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, KeyboardNotificationProtocol, DesignableButtonProtocol {
 
     // MARK: - IBOutlets
 
@@ -21,56 +21,25 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
 
-    // MARK: - Properties
+    // MARK: - KeyboardLinkedVC Property
 
-    private var textFieldBottomY: CGFloat = 0
-    private var viewInsetForKeyboard: CGFloat = 0 {
-        didSet {
-            view.frame.origin.y += viewInsetForKeyboard == 0 ? oldValue : -viewInsetForKeyboard
-        }
-    }
+    var lowestViewOverTheKeyboard: UIView?
     
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLoginButton()
 
-        SignalProducer
-            .combineLatest(emailTextfield.reactive.continuousTextValues.producer, passwordTextfield.reactive.continuousTextValues.producer)
-            .startWithValues { [weak self] (email, password) in
-                guard let `self` = self else { return }
+        /// KeyboardNotificationProtocol
+        lowestViewOverTheKeyboard = loginButton
+        bindViewOnKeyboardNotifications()
 
-                if let email = email, let password = password {
-                    self.loginButton.isEnabled = email.count > 0 && password.count > 0
-                    return
-                }
-                self.loginButton.isEnabled = false
-        }
-    }
+        /// DesignableButtonProtocol
+        setupDesignableButton(loginButton)
+        disableButton(loginButton, untilTextFieldNotEmpty: [emailTextfield, passwordTextfield])
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        tabBarController?.tabBar.isHidden = true
-
-        subscribeToKeyboardNotifications()
-        emailTextfield.delegate = self
-        passwordTextfield.delegate = self
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tabBarController?.tabBar.isHidden = false
-
-        unsubscribeFromKeyboardNotifications()
-    }
-
-    // MARK: - Setup UI
-
-    private func setupLoginButton() {
-        loginButton.setBackgroundColor(.lightGray, for: .disabled, animated: false, animationDuration: nil)
-        loginButton.isEnabled = false
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTab))
+        view.addGestureRecognizer(tap)
     }
 
     // MARK: - Navigation
@@ -114,7 +83,6 @@ class LoginViewController: UIViewController {
                 self.goToMain()
 
             case .failure(let error):
-                print("Error: \(error.localizedDescription)")
                 if case .producerFailed(let error) = error {
                     HUD.flash(.label(error.localizedError), delay: 1.0)
                 } else {
@@ -124,56 +92,11 @@ class LoginViewController: UIViewController {
         }
     }
 
-    // MARK: - Keyboard Functions
+    // MARK: - Keyboard
 
-    private func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-    }
-
-    private func unsubscribeFromKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
-    }
-
-    @objc private func keyboardWillShow(_ notification:Notification) {
-        let keyboardTopYAxis = getKeyboardTopYAxis(notification)
-
-        viewInsetForKeyboard = textFieldBottomY > keyboardTopYAxis ? textFieldBottomY - keyboardTopYAxis - 15 : 0
-    }
-
-    @objc private func keyboardWillHide(_ notification:Notification) {
-        viewInsetForKeyboard = 0
-    }
-
-    private func getKeyboardTopYAxis(_ notification:Notification) -> CGFloat {
-        let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
-
-        return view.frame.height - keyboardSize.cgRectValue.height
-    }
-
-    @objc private func hideKeyboard() {
+    @objc private func hideKeyboardOnTab() {
         view.endEditing(true)
     }
 }
 
-// MARK: - UITextFieldDelegate
-
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textFieldBottomY = textField.frame.origin.y + 50
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textFieldBottomY = 0
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        hideKeyboard()
-        return true
-    }
-}
 

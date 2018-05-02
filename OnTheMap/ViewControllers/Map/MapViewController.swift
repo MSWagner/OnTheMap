@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
     // MARK: - IBOutlets
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var sendLocationButton: UIButton!
 
     // MARK: - Properties
 
@@ -25,9 +26,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let parentTabBar = tabBarController as! MainTabBarController
-        viewModel = parentTabBar.viewModel
-
         mapView.delegate = self
         mapView.showsUserLocation = true
 
@@ -36,7 +34,13 @@ class MapViewController: UIViewController {
         mapView.register(StudentAnnotationView.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
 
-        bindViewModel()
+        if let parentTabBar = tabBarController as? MainTabBarController {
+            sendLocationButton.isHidden = true
+            viewModel = parentTabBar.viewModel
+            bindViewModel()
+        } else {
+            viewModel = LocationViewModel()
+        }
     }
 
     // MARK: - Datasource
@@ -52,6 +56,12 @@ class MapViewController: UIViewController {
             self.mapView.removeAnnotations(self.mapView.annotations)
             self.mapView.addAnnotations(studentAnnotations)
         }
+    }
+
+    // MARK: - IBActions
+
+    @IBAction func onSendLocation(_ sender: Any) {
+
     }
 }
 

@@ -66,7 +66,7 @@ class TableViewController: UIViewController {
     // MARK: Refresh Control
 
     @objc private func refreshStudentInformations() {
-        viewModel.refreshStudentLocations.apply().startWithResult { [weak self] _ in
+        viewModel.refreshStudentLocations.apply().startWithResult { [weak self] _ in 
             self?.refreshControl.endRefreshing()
         }
     }

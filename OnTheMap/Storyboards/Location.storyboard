@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DzL-6U-s1W">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SignIn-->
+        <scene sceneID="aik-lT-v82">
+            <objects>
+                <viewController storyboardIdentifier="AddLocationViewController" title="Add Location" id="DzL-6U-s1W" userLabel="SignIn" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j1l-Hv-Reb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_world" translatesAutoresizingMaskIntoConstraints="NO" id="1b4-Yg-yUt">
+                                <rect key="frame" x="137.5" y="70" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1b4-Yg-yUt" secondAttribute="height" multiplier="1:1" id="6gw-uf-9y7"/>
+                                    <constraint firstAttribute="width" constant="100" id="MRr-Z1-1zV"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Udacity - On The Map" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="TT7-s8-8Lu">
+                                <rect key="frame" x="92.5" y="180" width="190" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                <color key="textColor" red="0.31281119590000001" green="0.6902379394" blue="0.87455910439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jkh-uq-n6r" userLabel="location">
+                                <rect key="frame" x="37.5" y="264" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Aby-Lm-D7B"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="location"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Hd-QL-1AS" userLabel="url">
+                                <rect key="frame" x="37.5" y="324" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ytv-Jj-NZT"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="done" textContentType="url"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBd-mN-wdN" userLabel="findLocation" customClass="DesignableButton" customModule="OnTheMap" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="384" width="300" height="50"/>
+                                <color key="backgroundColor" red="0.31372549020000001" green="0.69019607839999997" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JWC-Ay-6He"/>
+                                </constraints>
+                                <state key="normal" title="Find Location">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorNormal">
+                                        <color key="value" red="0.31372549020000001" green="0.69019607839999997" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorHighlight">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColorLoading">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onFindLocation:" destination="DzL-6U-s1W" eventType="touchUpInside" id="Zrc-zK-4te"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TT7-s8-8Lu" firstAttribute="centerX" secondItem="kQV-j7-5E1" secondAttribute="centerX" id="4ZX-mJ-L56"/>
+                            <constraint firstItem="SBd-mN-wdN" firstAttribute="width" secondItem="j1l-Hv-Reb" secondAttribute="width" multiplier="0.8" id="9P8-Eb-gcF"/>
+                            <constraint firstItem="TT7-s8-8Lu" firstAttribute="top" secondItem="1b4-Yg-yUt" secondAttribute="bottom" constant="10" id="AeZ-50-1Kf"/>
+                            <constraint firstItem="1b4-Yg-yUt" firstAttribute="top" secondItem="kQV-j7-5E1" secondAttribute="top" constant="50" id="JPr-56-eEr"/>
+                            <constraint firstItem="1Hd-QL-1AS" firstAttribute="centerX" secondItem="kQV-j7-5E1" secondAttribute="centerX" id="LEt-Vc-wtV"/>
+                            <constraint firstItem="SBd-mN-wdN" firstAttribute="top" secondItem="1Hd-QL-1AS" secondAttribute="bottom" constant="10" id="NdQ-Xi-rk1"/>
+                            <constraint firstItem="1Hd-QL-1AS" firstAttribute="top" secondItem="jkh-uq-n6r" secondAttribute="bottom" constant="10" id="PiB-Z0-TKL"/>
+                            <constraint firstItem="TT7-s8-8Lu" firstAttribute="width" secondItem="1b4-Yg-yUt" secondAttribute="width" multiplier="1.9" id="PxM-vG-eGy"/>
+                            <constraint firstItem="1b4-Yg-yUt" firstAttribute="centerX" secondItem="j1l-Hv-Reb" secondAttribute="centerX" id="Sqq-Ud-NFd"/>
+                            <constraint firstItem="jkh-uq-n6r" firstAttribute="top" secondItem="TT7-s8-8Lu" secondAttribute="bottom" constant="50" id="dPQ-iB-ViH"/>
+                            <constraint firstItem="jkh-uq-n6r" firstAttribute="centerX" secondItem="kQV-j7-5E1" secondAttribute="centerX" id="g0V-B9-2Ep"/>
+                            <constraint firstItem="SBd-mN-wdN" firstAttribute="centerX" secondItem="kQV-j7-5E1" secondAttribute="centerX" id="gKv-GB-QPn"/>
+                            <constraint firstItem="jkh-uq-n6r" firstAttribute="width" secondItem="j1l-Hv-Reb" secondAttribute="width" multiplier="0.8" id="kda-LO-srH"/>
+                            <constraint firstItem="1Hd-QL-1AS" firstAttribute="width" secondItem="j1l-Hv-Reb" secondAttribute="width" multiplier="0.8" id="mLd-Vo-Rc1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kQV-j7-5E1"/>
+                    </view>
+                    <connections>
+                        <outlet property="findLocationButton" destination="SBd-mN-wdN" id="4VS-Ym-HUX"/>
+                        <outlet property="locationTextField" destination="jkh-uq-n6r" id="GT6-z1-chA"/>
+                        <outlet property="topConstraintForKeyboard" destination="JPr-56-eEr" id="Nd2-aB-oCy"/>
+                        <outlet property="urlTextField" destination="1Hd-QL-1AS" id="vGu-T2-rli"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BcW-dv-vAO" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-146" y="116"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_world" width="52" height="67"/>
+    </resources>
+</document>

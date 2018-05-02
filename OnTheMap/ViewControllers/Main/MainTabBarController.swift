@@ -37,8 +37,8 @@ class MainTabBarController: UITabBarController {
     // MARK: - Navigation
 
     private func goToAuth() {
-        let loginViewController: LoginViewController = UIStoryboard(.auth).instantiateViewController()
-        setRootViewController(loginViewController, animationOption: .transitionFlipFromBottom)
+        let loginVC: LoginViewController = UIStoryboard(.auth).instantiateViewController()
+        setRootViewController(loginVC, animationOption: .transitionFlipFromBottom)
     }
 
     // MARK: - IBActions
@@ -50,6 +50,7 @@ class MainTabBarController: UITabBarController {
 
             switch result {
             case .success:
+                UserController.currentUser = nil
                 self?.goToAuth()
                 HUD.flash(.success)
 
@@ -64,6 +65,8 @@ class MainTabBarController: UITabBarController {
     }
 
     @IBAction func onAdd(_ sender: Any) {
+        let addLocationVC: AddLocationViewController = UIStoryboard(.location).instantiateViewController()
+        navigationController?.pushViewController(addLocationVC, animated: true)
     }
 
     @IBAction func onRefresh(_ sender: Any) {

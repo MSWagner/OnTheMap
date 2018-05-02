@@ -158,10 +158,10 @@ extension API {
                 "uniqueKey": location.uniqueKey,
                 "firstName": location.firstName,
                 "lastName": location.lastName,
-                "mapString": location.mapString,
-                "mediaURL": location.mediaURL,
-                "latitude": location.latitude,
-                "longitude": location.longitude
+                "mapString": location.mapString ?? "",
+                "mediaURL": location.mediaURL ?? "",
+                "latitude": location.latitude ?? "",
+                "longitude": location.longitude ?? ""
             ]
 
         default: return nil

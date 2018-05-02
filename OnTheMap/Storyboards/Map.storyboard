@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,13 +23,29 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGS-gf-Lqx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                             </mapView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVi-Xc-FaF">
+                                <rect key="frame" x="37" y="548" width="300" height="50"/>
+                                <color key="backgroundColor" red="0.35686274509999999" green="0.80000000000000004" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6Ct-BL-Efa"/>
+                                </constraints>
+                                <state key="normal" title="Send Location">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSendLocation:" destination="pbc-Ws-nag" eventType="touchUpInside" id="Ao4-Tl-A1d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="1Rv-Dq-ZxM" firstAttribute="bottom" secondItem="ZVi-Xc-FaF" secondAttribute="bottom" constant="20" id="JzI-wC-M1y"/>
                             <constraint firstItem="1Rv-Dq-ZxM" firstAttribute="trailing" secondItem="VGS-gf-Lqx" secondAttribute="trailing" id="RML-hJ-1jx"/>
                             <constraint firstItem="VGS-gf-Lqx" firstAttribute="top" secondItem="m5P-55-LC7" secondAttribute="top" id="Wnw-BN-7pQ"/>
                             <constraint firstItem="1Rv-Dq-ZxM" firstAttribute="bottom" secondItem="VGS-gf-Lqx" secondAttribute="bottom" id="YeN-mp-U6f"/>
+                            <constraint firstItem="ZVi-Xc-FaF" firstAttribute="centerX" secondItem="1Rv-Dq-ZxM" secondAttribute="centerX" id="hsK-UB-Ujv"/>
                             <constraint firstItem="VGS-gf-Lqx" firstAttribute="leading" secondItem="1Rv-Dq-ZxM" secondAttribute="leading" id="qc2-dT-BdT"/>
+                            <constraint firstItem="ZVi-Xc-FaF" firstAttribute="width" secondItem="m5P-55-LC7" secondAttribute="width" multiplier="0.8" id="zOy-6q-ka8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Rv-Dq-ZxM"/>
                     </view>
@@ -43,6 +60,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="VGS-gf-Lqx" id="TCr-0u-pLi"/>
+                        <outlet property="sendLocationButton" destination="ZVi-Xc-FaF" id="3L9-TQ-lfV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oZf-Cp-CYM" userLabel="First Responder" sceneMemberID="firstResponder"/>

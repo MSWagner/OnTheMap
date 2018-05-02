@@ -6,6 +6,7 @@ enum Storyboard: String {
     case main = "Main"
     case auth = "Auth"
     case map = "Map"
+    case location = "Location"
     case table = "Table"
 }
 

@@ -23,6 +23,9 @@
 		D3624E1C2098E7E00086EFD9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E1B2098E7E00086EFD9 /* Appearance.swift */; };
 		D3624E1E2098F05C0086EFD9 /* StudentAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E1D2098F05C0086EFD9 /* StudentAnnotation.swift */; };
 		D3624E212098FA0A0086EFD9 /* StudentAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E202098FA0A0086EFD9 /* StudentAnnotationView.swift */; };
+		D3624E3A209A115D0086EFD9 /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3624E39209A115D0086EFD9 /* Location.storyboard */; };
+		D3624E3D209A11900086EFD9 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E3C209A11900086EFD9 /* AddLocationViewController.swift */; };
+		D3624E3F209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E3E209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift */; };
 		D37C115B1FE11A0400020631 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115A1FE11A0400020631 /* APIClient.swift */; };
 		D37C115D1FE11A2200020631 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115C1FE11A2200020631 /* API.swift */; };
 		D37C115F1FE14B5200020631 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115E1FE14B5200020631 /* StudentInformation.swift */; };
@@ -42,6 +45,9 @@
 		D38A180D204F08BA000F8619 /* SimpleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38A1802204F08BA000F8619 /* SimpleButton.framework */; };
 		D38A180F204F1308000F8619 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A180E204F1308000F8619 /* APIError.swift */; };
 		D38A1811204F13B6000F8619 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A1810204F13B6000F8619 /* Strings.swift */; };
+		D3A236AD209A36F70040298A /* Notification+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A236AC209A36F70040298A /* Notification+Parse.swift */; };
+		D3A236AF209A3C8E0040298A /* KeyboardNotificationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A236AE209A3C8E0040298A /* KeyboardNotificationProtocol.swift */; };
+		D3A236B1209A49980040298A /* DesignableButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A236B0209A49980040298A /* DesignableButtonProtocol.swift */; };
 		D3C868F520923CF100CC3071 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C868F420923CF100CC3071 /* Decoders.swift */; };
 		D3C868F7209245B400CC3071 /* AnyError+APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C868F6209245B400CC3071 /* AnyError+APIError.swift */; };
 		D3E4AA6C205E98E80038752E /* UdacityError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA6B205E98E80038752E /* UdacityError.swift */; };
@@ -75,6 +81,9 @@
 		D3624E1B2098E7E00086EFD9 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		D3624E1D2098F05C0086EFD9 /* StudentAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAnnotation.swift; sourceTree = "<group>"; };
 		D3624E202098FA0A0086EFD9 /* StudentAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAnnotationView.swift; sourceTree = "<group>"; };
+		D3624E39209A115D0086EFD9 /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
+		D3624E3C209A11900086EFD9 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
+		D3624E3E209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLinkedToTextFieldsViewController.swift; sourceTree = "<group>"; };
 		D37C115A1FE11A0400020631 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		D37C115C1FE11A2200020631 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D37C115E1FE14B5200020631 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
@@ -94,6 +103,9 @@
 		D38A1802204F08BA000F8619 /* SimpleButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimpleButton.framework; path = Build/iOS/SimpleButton.framework; sourceTree = "<group>"; };
 		D38A180E204F1308000F8619 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		D38A1810204F13B6000F8619 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		D3A236AC209A36F70040298A /* Notification+Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Parse.swift"; sourceTree = "<group>"; };
+		D3A236AE209A3C8E0040298A /* KeyboardNotificationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationProtocol.swift; sourceTree = "<group>"; };
+		D3A236B0209A49980040298A /* DesignableButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableButtonProtocol.swift; sourceTree = "<group>"; };
 		D3C868F420923CF100CC3071 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
 		D3C868F6209245B400CC3071 /* AnyError+APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnyError+APIError.swift"; sourceTree = "<group>"; };
 		D3E4AA6B205E98E80038752E /* UdacityError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityError.swift; sourceTree = "<group>"; };
@@ -198,6 +210,7 @@
 				D3E4AA7C205EEB090038752E /* Main */,
 				D3624E122098DD880086EFD9 /* Map */,
 				D3624E132098DD980086EFD9 /* Table */,
+				D3624E3B209A117B0086EFD9 /* Location */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -209,6 +222,7 @@
 				D30DC8281FDD856500432443 /* Main.storyboard */,
 				D3E4AA71205EB97D0038752E /* Map.storyboard */,
 				D3E4AA73205EBA100038752E /* Table.storyboard */,
+				D3624E39209A115D0086EFD9 /* Location.storyboard */,
 				D30DC82D1FDD856500432443 /* LaunchScreen.storyboard */,
 				D3E4AA6F205EB8F40038752E /* StoryBoard.swift */,
 			);
@@ -291,6 +305,14 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		D3624E3B209A117B0086EFD9 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				D3624E3C209A11900086EFD9 /* AddLocationViewController.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		D37C11591FE10E1600020631 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +337,9 @@
 				D3E4AA76205ECD3F0038752E /* Formatters.swift */,
 				D303498E2090FB4A00BF8650 /* DesignableButton.swift */,
 				D3C868F420923CF100CC3071 /* Decoders.swift */,
+				D3624E3E209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift */,
+				D3A236AE209A3C8E0040298A /* KeyboardNotificationProtocol.swift */,
+				D3A236B0209A49980040298A /* DesignableButtonProtocol.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -341,6 +366,7 @@
 			children = (
 				D3E4AA83205EECFD0038752E /* ViewController+AnimateRootViewController.swift */,
 				D3C868F6209245B400CC3071 /* AnyError+APIError.swift */,
+				D3A236AC209A36F70040298A /* Notification+Parse.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -408,6 +434,7 @@
 				D3E4AA74205EBA100038752E /* Table.storyboard in Resources */,
 				D30DC82F1FDD856500432443 /* LaunchScreen.storyboard in Resources */,
 				D30DC82C1FDD856500432443 /* Assets.xcassets in Resources */,
+				D3624E3A209A115D0086EFD9 /* Location.storyboard in Resources */,
 				D3E4AA6E205EB89F0038752E /* Auth.storyboard in Resources */,
 				D3413FD8204AA74400AEEC74 /* Cartfile in Resources */,
 				D30DC82A1FDD856500432443 /* Main.storyboard in Resources */,
@@ -451,6 +478,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3624E3F209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift in Sources */,
 				D38A17E1204EFD78000F8619 /* UserController.swift in Sources */,
 				D3E4AA86205EF5BF0038752E /* LoginButton.swift in Sources */,
 				D38A1811204F13B6000F8619 /* Strings.swift in Sources */,
@@ -462,6 +490,7 @@
 				D30DC8251FDD856500432443 /* AppDelegate.swift in Sources */,
 				D38A180F204F1308000F8619 /* APIError.swift in Sources */,
 				D3E4AA7E205EEB2F0038752E /* MainTabBarController.swift in Sources */,
+				D3A236AF209A3C8E0040298A /* KeyboardNotificationProtocol.swift in Sources */,
 				D37C11631FE2B56500020631 /* SignUpWebVC.swift in Sources */,
 				D3C868F7209245B400CC3071 /* AnyError+APIError.swift in Sources */,
 				D3E4AA6C205E98E80038752E /* UdacityError.swift in Sources */,
@@ -469,10 +498,13 @@
 				D37C115D1FE11A2200020631 /* API.swift in Sources */,
 				D3E4AA77205ECD3F0038752E /* Formatters.swift in Sources */,
 				D3624E1A2098E0B60086EFD9 /* StudentCell.swift in Sources */,
+				D3624E3D209A11900086EFD9 /* AddLocationViewController.swift in Sources */,
 				D3413FDA204AD95100AEEC74 /* Config.swift in Sources */,
+				D3A236AD209A36F70040298A /* Notification+Parse.swift in Sources */,
 				D3624E1C2098E7E00086EFD9 /* Appearance.swift in Sources */,
 				D3624E112098D4B40086EFD9 /* StudentViewModel.swift in Sources */,
 				D37C115F1FE14B5200020631 /* StudentInformation.swift in Sources */,
+				D3A236B1209A49980040298A /* DesignableButtonProtocol.swift in Sources */,
 				D37C115B1FE11A0400020631 /* APIClient.swift in Sources */,
 				D3624E152098DE030086EFD9 /* TableViewController.swift in Sources */,
 				D303498F2090FB4A00BF8650 /* DesignableButton.swift in Sources */,
