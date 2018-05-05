@@ -38,8 +38,21 @@ class MapViewController: UIViewController {
             sendLocationButton.isHidden = true
             viewModel = parentTabBar.viewModel
             bindViewModel()
-        } else {
-            viewModel = LocationViewModel()
+        }
+
+        if let _ = navigationController?.lastViewController() as? AddLocationViewController,
+            let ownStudentViewModel = viewModel.ownStudentViewModel {
+            sendLocationButton.isHidden = false
+
+            let ownAnnotation = StudentAnnotation(studentViewModel: ownStudentViewModel)
+
+            let degree: CLLocationDegrees = 0.05
+            let span = MKCoordinateSpanMake(degree, degree)
+            let location = CLLocationCoordinate2DMake(ownAnnotation.coordinate.latitude, ownAnnotation.coordinate.longitude)
+            let region = MKCoordinateRegionMake(location, span)
+
+            self.mapView.addAnnotation(ownAnnotation)
+            mapView.setRegion(region, animated: false)
         }
     }
 
@@ -61,7 +74,20 @@ class MapViewController: UIViewController {
     // MARK: - IBActions
 
     @IBAction func onSendLocation(_ sender: Any) {
+        HUD.show(.progress)
 
+        viewModel.uploadNewStudentLocation.apply().startWithResult { [weak self] result in
+            guard let `self` = self else { return }
+
+            switch result {
+            case .success:
+                HUD.flash(.success, onView: self.view, delay: 0.4, completion: { _ in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })
+            case .failure(_):
+                HUD.flash(.error, delay: 0.5)
+            }
+        }
     }
 }
 

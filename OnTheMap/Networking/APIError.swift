@@ -15,55 +15,23 @@ enum APIError: Swift.Error {
     // Underlying
     case underlying(Swift.Error)
 
-    // Error Messages
+    // Custom
     case invalidURLResponse
     case udacityError(UdacityError)
     case noConnection
-
-
-
+    case noStudentInformation
 
     var localizedError: LocalizedError {
         switch self {
         case .underlying(let error):
-            print("underlying")
             let nsError = error as NSError
             return nsError.localizedDescription
         case .udacityError(let error):
-            print("udacityError")
             return error.error
         case .noConnection:
             return "No Connection"
         default:
-            print("default")
             return APIError.defaultLocalizedError
-        }
-    }
-
-    var statusCode: Int? {
-        switch self {
-        case let .underlying(error):
-            print(error)
-            let nsError = error as NSError
-            return nsError.code
-        default:
-            return nil
-        }
-    }
-
-    // MARK: Helper
-
-    private func localizedNetworkErrorStatusCode(statusCode: Int, target: API) -> LocalizedError {
-        switch (target, statusCode) {
-
-        case (.postSession, 422), (.postSession, 400):
-            return Strings.Network.errorWrongCredentials
-
-        default:
-            if target.method == .get {
-                return String(format: Strings.Network.errorLoadingFailed, "\(statusCode)")
-            }
-            return String(format: Strings.Network.errorPostingFailed, "\(statusCode)")
         }
     }
 

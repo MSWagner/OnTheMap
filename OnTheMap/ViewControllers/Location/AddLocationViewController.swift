@@ -20,10 +20,13 @@ class AddLocationViewController: UIViewController, KeyboardNotificationProtocol,
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var findLocationButton: DesignableButton!
 
+    // MARK: - Properties
+
+    var viewModel: LocationViewModel!
+
     lazy var geocoder = CLGeocoder()
 
-    // MARK: - KeyboardLinkedVC Property
-
+    /// KeyboardLinkedVC Property
     var lowestViewOverTheKeyboard: UIView?
 
     // MARK: - Life Cycle
@@ -53,32 +56,25 @@ class AddLocationViewController: UIViewController, KeyboardNotificationProtocol,
     // MARK: - IBActions
 
     @IBAction func onFindLocation(_ sender: Any) {
-        if let text = locationTextField.text, !text.isEmpty {
+        self.hideKeyboardOnTab()
+        if let locationText = locationTextField.text, !locationText.isEmpty {
+            HUD.show(.progress)
 
-            let failure = {
-                HUD.flash(.label("No places found"), delay: 0.4)
-            }
+            viewModel.geocodeAddress
+                .apply((locationText, urlTextField.text))
+                .startWithResult { [weak self] (result) in
 
-            geocoder.geocodeAddressString(text) { [weak self] (placeMarks, error) in
-                print("in geocoder with \(String(describing: placeMarks?.first?.location?.coordinate.latitude)) placemarks")
+                guard let `self` = self else { return }
 
-                if let error = error {
-                    HUD.flash(.label(error.localizedDescription), delay: 0.8)
-                    return
-                } else if let placeMarks = placeMarks, placeMarks.count > 0 {
-
-                    let firstPlaceMarkWithCoordinate = placeMarks
-                        .compactMap{ $0.location?.coordinate }
-                            .first
-
-                    if let firstPlaceMarkWithCoordinate = firstPlaceMarkWithCoordinate {
-                        let mapVC: MapViewController = UIStoryboard(.map).instantiateViewController()
-                        self?.navigationController?.pushViewController(mapVC, animated: true)
-                    } else {
-                        failure()
-                    }
-                } else {
-                    failure()
+                switch result {
+                case .success:
+                    HUD.flash(.success, onView: self.view, delay: 0.4, completion: { _ in
+                        let mapViewController: MapViewController = UIStoryboard(.map).instantiateViewController()
+                        mapViewController.viewModel = self.viewModel
+                        self.navigationController?.pushViewController(mapViewController, animated: true)
+                    })
+                case .failure(let error):
+                    HUD.flash(.label(error.localizedDescription), delay: 0.7)
                 }
             }
         } else {

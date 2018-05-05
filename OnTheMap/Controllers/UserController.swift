@@ -12,6 +12,7 @@ import ReactiveSwift
 import Result
 
 typealias LoginCredentials = (String, String)
+typealias UniqueKey = String
 
 enum UserState {
     case noHash
@@ -35,6 +36,12 @@ class UserController: NSObject {
                 let userData = NSKeyedUnarchiver.unarchiveObject(with: userKeychain) as? Data, cachedUser == nil,
                 let user = try? JSONDecoder().decode(User.self, from: userData) {
                 cachedUser = user
+                print("UserKey: \(user.account.key)")
+
+                if user.publicData == nil {
+                    UserController.shared.getPublicData.apply(user.account.key).start()
+                }
+
                 return user
             } else {
                 return cachedUser
@@ -75,7 +82,7 @@ class UserController: NSObject {
             return APIClient
                 .request(.postSession(email: email, password: password), type: User.self)
                 .on(value: { user in
-                    print("Credential saved")
+                    UserController.shared.getPublicData.apply(user.account.key).start()
                     UserController.currentUser = user
                 })
         }
@@ -84,6 +91,22 @@ class UserController: NSObject {
     lazy var logout: Action<Void, RequestResponse, APIError> = {
         return Action {
             return APIClient.request(.deleteSession)
+        }
+    }()
+
+    // MARK: - Public Data
+
+    lazy var getPublicData: Action<UniqueKey, PublicUserData, APIError> = {
+
+        return Action { uniqueKey in
+            APIClient
+                .request(.getPublicUserData(uniqueKey: uniqueKey), type: PublicUserData.self)
+                .on(value: { publicData in
+                    var newUser = UserController.currentUser
+                    newUser?.publicData = publicData.user
+
+                    UserController.currentUser = newUser
+                })
         }
     }()
 }

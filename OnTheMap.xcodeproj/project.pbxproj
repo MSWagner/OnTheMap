@@ -13,6 +13,10 @@
 		D30DC82A1FDD856500432443 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30DC8281FDD856500432443 /* Main.storyboard */; };
 		D30DC82C1FDD856500432443 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D30DC82B1FDD856500432443 /* Assets.xcassets */; };
 		D30DC82F1FDD856500432443 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D30DC82D1FDD856500432443 /* LaunchScreen.storyboard */; };
+		D3133DFF209E306100C87D11 /* NavigationViewController+LastVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3133DFE209E306100C87D11 /* NavigationViewController+LastVC.swift */; };
+		D3133E01209E38D000C87D11 /* PublicUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3133E00209E38D000C87D11 /* PublicUserData.swift */; };
+		D3133E03209E4E4300C87D11 /* GeoCodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3133E02209E4E4300C87D11 /* GeoCodeResult.swift */; };
+		D3133E05209E4EBB00C87D11 /* GeoCodeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3133E04209E4EBB00C87D11 /* GeoCodeError.swift */; };
 		D3413FD8204AA74400AEEC74 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = D3413FD7204AA74300AEEC74 /* Cartfile */; };
 		D3413FDA204AD95100AEEC74 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3413FD9204AD95100AEEC74 /* Config.swift */; };
 		D3624E0F2098D38A0086EFD9 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E0E2098D38A0086EFD9 /* LocationViewModel.swift */; };
@@ -25,7 +29,6 @@
 		D3624E212098FA0A0086EFD9 /* StudentAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E202098FA0A0086EFD9 /* StudentAnnotationView.swift */; };
 		D3624E3A209A115D0086EFD9 /* Location.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3624E39209A115D0086EFD9 /* Location.storyboard */; };
 		D3624E3D209A11900086EFD9 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E3C209A11900086EFD9 /* AddLocationViewController.swift */; };
-		D3624E3F209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3624E3E209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift */; };
 		D37C115B1FE11A0400020631 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115A1FE11A0400020631 /* APIClient.swift */; };
 		D37C115D1FE11A2200020631 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115C1FE11A2200020631 /* API.swift */; };
 		D37C115F1FE14B5200020631 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37C115E1FE14B5200020631 /* StudentInformation.swift */; };
@@ -71,6 +74,10 @@
 		D30DC82B1FDD856500432443 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D30DC82E1FDD856500432443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D30DC8301FDD856500432443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3133DFE209E306100C87D11 /* NavigationViewController+LastVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationViewController+LastVC.swift"; sourceTree = "<group>"; };
+		D3133E00209E38D000C87D11 /* PublicUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicUserData.swift; sourceTree = "<group>"; };
+		D3133E02209E4E4300C87D11 /* GeoCodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCodeResult.swift; sourceTree = "<group>"; };
+		D3133E04209E4EBB00C87D11 /* GeoCodeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCodeError.swift; sourceTree = "<group>"; };
 		D3413FD7204AA74300AEEC74 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		D3413FD9204AD95100AEEC74 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		D3624E0E2098D38A0086EFD9 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
@@ -83,7 +90,6 @@
 		D3624E202098FA0A0086EFD9 /* StudentAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentAnnotationView.swift; sourceTree = "<group>"; };
 		D3624E39209A115D0086EFD9 /* Location.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Location.storyboard; sourceTree = "<group>"; };
 		D3624E3C209A11900086EFD9 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
-		D3624E3E209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLinkedToTextFieldsViewController.swift; sourceTree = "<group>"; };
 		D37C115A1FE11A0400020631 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		D37C115C1FE11A2200020631 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D37C115E1FE14B5200020631 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
@@ -185,10 +191,9 @@
 		D30DC8361FDD85A000432443 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D37C115E1FE14B5200020631 /* StudentInformation.swift */,
-				D3624E1D2098F05C0086EFD9 /* StudentAnnotation.swift */,
-				D37C11601FE28ADC00020631 /* User.swift */,
-				D3E4AA6B205E98E80038752E /* UdacityError.swift */,
+				D3133E08209E4FA800C87D11 /* Map */,
+				D3133E07209E4F9900C87D11 /* API */,
+				D3133E06209E4F8C00C87D11 /* Error */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +218,34 @@
 				D3624E3B209A117B0086EFD9 /* Location */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D3133E06209E4F8C00C87D11 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4AA6B205E98E80038752E /* UdacityError.swift */,
+				D3133E04209E4EBB00C87D11 /* GeoCodeError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		D3133E07209E4F9900C87D11 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D37C11601FE28ADC00020631 /* User.swift */,
+				D3133E00209E38D000C87D11 /* PublicUserData.swift */,
+				D37C115E1FE14B5200020631 /* StudentInformation.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D3133E08209E4FA800C87D11 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D3624E1D2098F05C0086EFD9 /* StudentAnnotation.swift */,
+				D3133E02209E4E4300C87D11 /* GeoCodeResult.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		D3413FD3204AA63700AEEC74 /* Storyboards */ = {
@@ -337,7 +370,6 @@
 				D3E4AA76205ECD3F0038752E /* Formatters.swift */,
 				D303498E2090FB4A00BF8650 /* DesignableButton.swift */,
 				D3C868F420923CF100CC3071 /* Decoders.swift */,
-				D3624E3E209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift */,
 				D3A236AE209A3C8E0040298A /* KeyboardNotificationProtocol.swift */,
 				D3A236B0209A49980040298A /* DesignableButtonProtocol.swift */,
 			);
@@ -365,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4AA83205EECFD0038752E /* ViewController+AnimateRootViewController.swift */,
+				D3133DFE209E306100C87D11 /* NavigationViewController+LastVC.swift */,
 				D3C868F6209245B400CC3071 /* AnyError+APIError.swift */,
 				D3A236AC209A36F70040298A /* Notification+Parse.swift */,
 			);
@@ -478,7 +511,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3624E3F209A12EB0086EFD9 /* KeyboardLinkedToTextFieldsViewController.swift in Sources */,
 				D38A17E1204EFD78000F8619 /* UserController.swift in Sources */,
 				D3E4AA86205EF5BF0038752E /* LoginButton.swift in Sources */,
 				D38A1811204F13B6000F8619 /* Strings.swift in Sources */,
@@ -488,7 +520,10 @@
 				D30DC8271FDD856500432443 /* LoginViewController.swift in Sources */,
 				D3624E0F2098D38A0086EFD9 /* LocationViewModel.swift in Sources */,
 				D30DC8251FDD856500432443 /* AppDelegate.swift in Sources */,
+				D3133E05209E4EBB00C87D11 /* GeoCodeError.swift in Sources */,
+				D3133E01209E38D000C87D11 /* PublicUserData.swift in Sources */,
 				D38A180F204F1308000F8619 /* APIError.swift in Sources */,
+				D3133DFF209E306100C87D11 /* NavigationViewController+LastVC.swift in Sources */,
 				D3E4AA7E205EEB2F0038752E /* MainTabBarController.swift in Sources */,
 				D3A236AF209A3C8E0040298A /* KeyboardNotificationProtocol.swift in Sources */,
 				D37C11631FE2B56500020631 /* SignUpWebVC.swift in Sources */,
@@ -500,6 +535,7 @@
 				D3624E1A2098E0B60086EFD9 /* StudentCell.swift in Sources */,
 				D3624E3D209A11900086EFD9 /* AddLocationViewController.swift in Sources */,
 				D3413FDA204AD95100AEEC74 /* Config.swift in Sources */,
+				D3133E03209E4E4300C87D11 /* GeoCodeResult.swift in Sources */,
 				D3A236AD209A36F70040298A /* Notification+Parse.swift in Sources */,
 				D3624E1C2098E7E00086EFD9 /* Appearance.swift in Sources */,
 				D3624E112098D4B40086EFD9 /* StudentViewModel.swift in Sources */,
@@ -652,7 +688,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T3TBY9W4TM;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(inherited)",
@@ -672,7 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T3TBY9W4TM;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(inherited)",

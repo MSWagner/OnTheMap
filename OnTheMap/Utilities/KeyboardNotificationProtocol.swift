@@ -23,21 +23,22 @@ extension KeyboardNotificationProtocol where Self: UIViewController {
 
         let center = NotificationCenter.default.reactive
 
-        let lowestYValueOverTheKeyboard = lowestViewOverTheKeyboard.frame.origin.y
-                                        + lowestViewOverTheKeyboard.frame.height
-
-        let viewHeight = view.frame.height
-
         center.notifications(forName: .UIKeyboardWillShow).map{ $0.parse() }.skipNil().observe { [weak self] notificationSignal in
             guard let value = notificationSignal.value else { return }
             guard let `self` = self else { return }
 
-            let keyBoardHeight = value.0
-            let keyboardTopYAxis = viewHeight - keyBoardHeight
+            let lowestYValueOverTheKeyboard = lowestViewOverTheKeyboard.frame.origin.y
+                                            + lowestViewOverTheKeyboard.frame.height
 
-            let topOffset = self.view.safeAreaInsets.top == 20 ? -20 : self.view.safeAreaInsets.top - 20
-            self.view.frame.origin.y = lowestYValueOverTheKeyboard > keyboardTopYAxis
-                                     ? -(lowestYValueOverTheKeyboard - keyboardTopYAxis + topOffset + 5 )
+            let viewHeight = self.view.frame.height
+
+            let keyBoardHeight = value.0
+            let keyboardTopYValue = viewHeight - keyBoardHeight
+
+            let topOffset: CGFloat = self.view.safeAreaInsets.top == 20 ? -20 : 0
+
+            self.view.frame.origin.y = lowestYValueOverTheKeyboard > keyboardTopYValue
+                                     ? -(lowestYValueOverTheKeyboard - keyboardTopYValue + topOffset + 5 )
                                      : 0
         }
 

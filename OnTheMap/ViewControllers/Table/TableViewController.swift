@@ -39,6 +39,22 @@ class TableViewController: UIViewController {
 
                         return .deselect
                     }
+                    .willDisplay { [weak self] ( _, _, indexPath) in
+                        guard let `self` = self else { return }
+
+                        if let lastVisibleIndexPath = self.tableView.indexPathsForVisibleRows?.last,
+                            indexPath == lastVisibleIndexPath {
+
+                            print("Last Visible Cell \(indexPath.row)")
+
+                            let loadedStudentCount = self.viewModel.studentViewModels.value.count
+
+                            if loadedStudentCount - indexPath.row < 50 {
+                                print("True")
+                                self.viewModel.refreshStudentLocations.apply(false).start()
+                            }
+                        }
+                    }
                     .height { 70 }
             ],
             sectionDescriptors: [
@@ -58,6 +74,9 @@ class TableViewController: UIViewController {
         let parentTabBar = tabBarController as! MainTabBarController
         viewModel = parentTabBar.viewModel
 
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
+
         tableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshStudentInformations), for: .valueChanged)
         bindViewModel()
@@ -66,7 +85,7 @@ class TableViewController: UIViewController {
     // MARK: Refresh Control
 
     @objc private func refreshStudentInformations() {
-        viewModel.refreshStudentLocations.apply().startWithResult { [weak self] _ in 
+        viewModel.refreshStudentLocations.apply(true).startWithResult { [weak self] _ in
             self?.refreshControl.endRefreshing()
         }
     }

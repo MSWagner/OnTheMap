@@ -27,6 +27,10 @@ public struct Strings {
         static let errorMediaUrl = Strings.localized("studentinformation_error_media_url", value: "The user hasn't a valid url")
     }
 
+    public struct GeoCoding {
+        static let errorEmptyResult = Strings.localized("geocoding_empty_results", value: "No Location found")
+    }
+
     // settings this closure allows you to use a custom localization provider, such as OneSky over-the-air
     // by default, NSLocalizedString will load the strings from the main bundle's Localizable.strings file
     public static var customLocalizationClosure: ((String, String?, Bundle, String, String) -> String)? = nil

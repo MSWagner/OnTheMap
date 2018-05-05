@@ -20,5 +20,4 @@ extension UIViewController {
             window.rootViewController = newRoot
         }, completion: nil)
     }
-
 }

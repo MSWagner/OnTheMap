@@ -18,7 +18,7 @@ class StudentViewModel {
     }
 
     var name: String {
-        return "\(model.firstName) \(model.lastName)"
+        return "\(model.firstName ?? "") \(model.lastName ?? "")"
     }
 
     var url: String {
@@ -31,6 +31,6 @@ class StudentViewModel {
     }
 
     var uniqueKey: String {
-        return model.uniqueKey
+        return model.uniqueKey ?? ""
     }
 }

@@ -30,7 +30,7 @@ class MainTabBarController: UITabBarController {
             print("No valid session")
             goToAuth()
         } else {
-            viewModel.refreshStudentLocations.apply().start()
+            viewModel.refreshStudentLocations.apply(true).start()
         }
     }
 
@@ -66,10 +66,11 @@ class MainTabBarController: UITabBarController {
 
     @IBAction func onAdd(_ sender: Any) {
         let addLocationVC: AddLocationViewController = UIStoryboard(.location).instantiateViewController()
+        addLocationVC.viewModel = viewModel
         navigationController?.pushViewController(addLocationVC, animated: true)
     }
 
     @IBAction func onRefresh(_ sender: Any) {
-        viewModel.refreshStudentLocations.apply().start()
+        viewModel.refreshStudentLocations.apply(true).start()
     }
 }

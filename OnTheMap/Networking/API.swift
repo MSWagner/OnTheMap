@@ -15,9 +15,12 @@ enum API {
     case deleteSession
     case signUp
 
+    // Public Data
+    case getPublicUserData(uniqueKey: String)
+
     // Location
     case getStudentLocations(limit: Int?, skip: Int?, order: String?)
-    case getStudentLocation
+    case getStudentLocation(uniqueKey: String)
     case postStudentLocation(location: StudentInformation)
     case putStudentLocation(location: StudentInformation, objectID: String)
 }
@@ -26,7 +29,7 @@ extension API {
 
     var host: String {
         switch self {
-        case .postSession, .deleteSession, .signUp:
+        case .postSession, .deleteSession, .signUp, .getPublicUserData:
             return "www.udacity.com"
 
         case .getStudentLocations,
@@ -46,12 +49,16 @@ extension API {
         case .signUp:
             return "/account"
 
+        case .getPublicUserData(let uniqueKey):
+            return "/api/users/\(uniqueKey)"
+
         case .getStudentLocations,
              .getStudentLocation,
              .postStudentLocation:
             return "/parse/classes/StudentLocation"
 
         case .putStudentLocation(_ , let objectID):
+            print("ObjectID: \(objectID)")
             return "/parse/classes/StudentLocation/\(objectID)"
         }
     }
@@ -64,9 +71,7 @@ extension API {
 
         switch self {
         case .getStudentLocations,
-             .getStudentLocation,
-             .postStudentLocation,
-             .putStudentLocation:
+             .getStudentLocation:
 
             components.queryItems = [URLQueryItem]()
 
@@ -80,16 +85,16 @@ extension API {
         default: break
         }
 
-//        print("Query: \(components.query)")
-//        print("URL: \(components.url)")
-//        print(components.debugDescription)
-//        print(components.string)
+        print("Query: \(components.query)")
+        print("URL: \(components.url)")
+        print(components.debugDescription)
+        print(components.string)
         return components.url!
     }
 
     var method: HTTPMethod {
         switch self {
-        case .getStudentLocation, .getStudentLocations, .signUp:
+        case .getStudentLocation, .getStudentLocations, .signUp, .getPublicUserData:
             return .get
         case .deleteSession:
             return .delete
@@ -128,6 +133,13 @@ extension API {
                 "X-Parse-REST-API-Key": Config.API.APIKey
             ]
 
+        case .postStudentLocation, .putStudentLocation:
+            return [
+                "X-Parse-Application-Id": Config.API.ParseAppID,
+                "X-Parse-REST-API-Key": Config.API.APIKey,
+                "Content-Type": "application/json"
+            ]
+
         default: return nil
         }
     }
@@ -138,31 +150,24 @@ extension API {
         case .getStudentLocations(let limit, _, _):
             return ["limit": limit ?? 100]
 
-        case .getStudentLocation:
-            return ["where": ["uniqueKey": 123]]
+        case .getStudentLocation(let uniqueKey):
+            return ["where": "{\"uniqueKey\": \"\(uniqueKey)\"}"]
 
         default: return nil
         }
     }
 
-    var body: [String: Any]? {
+    var body: Data? {
         switch self {
 
         case let .postSession(email, password):
-            return [
+            let json = [
                 "udacity": ["username": email, "password": password]
             ]
+            return try? JSONSerialization.data(withJSONObject: json)
 
         case let .postStudentLocation(location), let .putStudentLocation(location, _):
-            return [
-                "uniqueKey": location.uniqueKey,
-                "firstName": location.firstName,
-                "lastName": location.lastName,
-                "mapString": location.mapString ?? "",
-                "mediaURL": location.mediaURL ?? "",
-                "latitude": location.latitude ?? "",
-                "longitude": location.longitude ?? ""
-            ]
+            return try? JSONEncoder().encode(location)
 
         default: return nil
         }
@@ -179,7 +184,7 @@ extension API {
         }
 
         if let body = body {
-            request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+            request.httpBody = body
         }
 
         return request
@@ -188,7 +193,8 @@ extension API {
     var shouldSkipFirst5Chars: Bool {
         switch self {
         case .deleteSession,
-             .postSession:
+             .postSession,
+             .getPublicUserData:
             return true
         default:
             return false

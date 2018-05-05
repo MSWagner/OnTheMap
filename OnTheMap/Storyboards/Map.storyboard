@@ -7,12 +7,11 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--On the Map-->
+        <!--Map-->
         <scene sceneID="nUB-O6-bEN">
             <objects>
                 <viewController storyboardIdentifier="MapViewController" id="pbc-Ws-nag" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,13 +49,6 @@
                         <viewLayoutGuide key="safeArea" id="1Rv-Dq-ZxM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-selected" id="hlr-BI-97U"/>
-                    <navigationItem key="navigationItem" title="On the Map" id="6U6-Gx-xul">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="3TN-YJ-gpF"/>
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="4Lr-ky-d05"/>
-                            <barButtonItem systemItem="refresh" id="OVX-1x-Tgd"/>
-                        </rightBarButtonItems>
-                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="VGS-gf-Lqx" id="TCr-0u-pLi"/>
