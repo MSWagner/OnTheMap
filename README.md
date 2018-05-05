@@ -9,7 +9,7 @@ OnTheMap is a project for the **Udacity iOS Developer Nanodegree**.
 ### Login/StudentsInformations
 | Login | Map | Table |
 |----------|-----------|-----------|
-|<img src="https://github.com/MSWagner/MemeMe/blob/master/Screenshots/Login.PNG" width="200">|<img src="https://github.com/MSWagner/MemeMe/blob/master/Screenshots/ShowStudentsMap.PNG" width="200">|<img src="https://github.com/MSWagner/MemeMe/blob/master/Screenshots/ShowStudentsTable.PNG" width="200">|
+|<img src="https://github.com/MSWagner/OnTheMap/blob/master/Screenshots/Login.PNG" width="200">|<img src="https://github.com/MSWagner/OnTheMap/blob/master/Screenshots/ShowStudentsMap.PNG" width="200">|<img src="https://github.com/MSWagner/OnTheMap/blob/master/Screenshots/ShowStudentsTable.PNG" width="200">|
 
 
 ## License
