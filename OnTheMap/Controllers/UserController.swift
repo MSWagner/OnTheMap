@@ -36,7 +36,6 @@ class UserController: NSObject {
                 let userData = NSKeyedUnarchiver.unarchiveObject(with: userKeychain) as? Data, cachedUser == nil,
                 let user = try? JSONDecoder().decode(User.self, from: userData) {
                 cachedUser = user
-                print("UserKey: \(user.account.key)")
 
                 if user.publicData == nil {
                     UserController.shared.getPublicData.apply(user.account.key).start()

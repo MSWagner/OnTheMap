@@ -62,12 +62,8 @@ class APIClient {
                                 tempData = data.subdata(in: range)
                             }
 
-//                            let json = try JSONSerialization.jsonObject(with: tempData) as? [String: Any]
                             let decoder = JSONDecoder()
                             decoder.dateDecodingStrategy = .formatted(Formatters.isoDateFormatter)
-
-                            print(String(data: tempData, encoding: .utf8)!)
-//                            print("JSON: \(json.debugDescription)")
 
                             if statusCode < 200 || statusCode >= 300 {
                                 let decodedError = try decoder.decode(UdacityError.self, from: tempData as Data)
@@ -79,11 +75,7 @@ class APIClient {
                             return decodedData
                         }
                     }
-                    .mapError {
-                        print($0.error)
-                        return $0.toAPIError()
-
-                    }
+                    .mapError { $0.toAPIError() }
                     .observe(on: UIScheduler())
             }
     }
@@ -98,14 +90,5 @@ class APIClient {
                 sink.send(error: APIError.noConnection)
             }
         }
-    }
-}
-
-extension SignalProducerProtocol {
-    func filterReachability(_ reachability: Reachability) throws -> SignalProducer<Self.Value, Self.Error> {
-        if reachability.connection == .none {
-            throw APIError.noConnection
-        }
-        return self.producer
     }
 }

@@ -85,7 +85,7 @@ class MapViewController: UIViewController {
                     self.navigationController?.popToRootViewController(animated: true)
                 })
             case .failure(_):
-                HUD.flash(.error, delay: 0.5)
+                HUD.flash(.label(Strings.Network.errorPostingFailed), delay: 0.8)
             }
         }
     }

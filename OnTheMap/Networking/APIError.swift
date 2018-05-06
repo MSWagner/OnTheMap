@@ -29,7 +29,7 @@ enum APIError: Swift.Error {
         case .udacityError(let error):
             return error.error
         case .noConnection:
-            return "No Connection"
+            return Strings.Network.errorNoConnection
         default:
             return APIError.defaultLocalizedError
         }

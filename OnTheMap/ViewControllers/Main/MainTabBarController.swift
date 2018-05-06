@@ -27,7 +27,6 @@ class MainTabBarController: UITabBarController {
         super.viewWillAppear(animated)
 
         if !UserController.hasValidSession {
-            print("No valid session")
             goToAuth()
         } else {
             viewModel.refreshStudentLocations.apply(true).start()

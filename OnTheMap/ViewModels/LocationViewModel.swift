@@ -74,11 +74,6 @@ class LocationViewModel {
                 return SignalProducer(error: APIError.noStudentInformation)
             }
 
-            print(ownStudentInformation.latitude)
-            print(ownStudentInformation.longitude)
-            print(ownStudentInformation.objectId!)
-
-
             let apiTarget: API = ownStudentInformation.objectId != nil
                          ? .putStudentLocation(location: ownStudentInformation,
                                                objectID: ownStudentInformation.objectId!)
@@ -101,7 +96,6 @@ class LocationViewModel {
             return SignalProducer<(GeoCodeResult, User), GeoCodeError> { [weak self] (sink, _) in
 
                 self?.geocoder.geocodeAddressString(address) { (placeMarks, error) in
-                    print("in geocoder with \(String(describing: placeMarks?.first?.location?.coordinate.latitude)) placemarks")
 
                     if let error = error {
                         let geoCodeError = GeoCodeError.underlying(error)
@@ -154,8 +148,6 @@ class LocationViewModel {
                 return APIClient
                     .request(.getStudentLocation(uniqueKey: user.account.key), type: StudentInformations.self)
                     .map { [weak self] value in
-                        print(geoCodeResult.coordinate.latitude)
-                        print(geoCodeResult.coordinate.longitude)
 
                         if var studentInformation = value.results.last {
                             studentInformation.latitude = geoCodeResult.coordinate.latitude

@@ -58,7 +58,6 @@ extension API {
             return "/parse/classes/StudentLocation"
 
         case .putStudentLocation(_ , let objectID):
-            print("ObjectID: \(objectID)")
             return "/parse/classes/StudentLocation/\(objectID)"
         }
     }
@@ -78,17 +77,12 @@ extension API {
             if let parameters = parameters {
                 for (key, value) in parameters {
                     let queryItem = URLQueryItem(name: key, value: "\(value)")
-//                    print("QueryItem: \(queryItem.name) \(queryItem.value)")
                     components.queryItems!.append(queryItem)
                 }
             }
         default: break
         }
 
-        print("Query: \(components.query)")
-        print("URL: \(components.url)")
-        print(components.debugDescription)
-        print(components.string)
         return components.url!
     }
 

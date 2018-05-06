@@ -45,12 +45,9 @@ class TableViewController: UIViewController {
                         if let lastVisibleIndexPath = self.tableView.indexPathsForVisibleRows?.last,
                             indexPath == lastVisibleIndexPath {
 
-                            print("Last Visible Cell \(indexPath.row)")
-
                             let loadedStudentCount = self.viewModel.studentViewModels.value.count
 
                             if loadedStudentCount - indexPath.row < 50 {
-                                print("True")
                                 self.viewModel.refreshStudentLocations.apply(false).start()
                             }
                         }
