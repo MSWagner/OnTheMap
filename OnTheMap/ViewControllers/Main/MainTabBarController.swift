@@ -29,7 +29,15 @@ class MainTabBarController: UITabBarController {
         if !UserController.hasValidSession {
             goToAuth()
         } else {
-            viewModel.refreshStudentLocations.apply(true).start()
+            viewModel.refreshStudentLocations.apply(true).startWithResult { (result) in
+                switch result {
+                case .success(_): break
+                case .failure(.producerFailed(let error)):
+                    HUD.flash(.label(error.localizedError), delay: 0.8)
+                case .failure(.disabled):
+                    HUD.flash(.label(Strings.Network.errorActionDisabled), delay: 0.8)
+                }
+            }
         }
     }
 
@@ -52,13 +60,10 @@ class MainTabBarController: UITabBarController {
                 UserController.currentUser = nil
                 self?.goToAuth()
                 HUD.flash(.success)
-
-            case .failure(let error):
-                if case .producerFailed(let error) = error {
-                    HUD.flash(.label(error.localizedError), delay: 1.0)
-                } else {
-                    HUD.flash(.error, delay: 0.5)
-                }
+            case .failure(.producerFailed(let error)):
+                HUD.flash(.label(error.localizedError), delay: 0.8)
+            case .failure(.disabled):
+                HUD.flash(.label(Strings.Network.errorActionDisabled), delay: 0.8)
             }
         }
     }
@@ -70,6 +75,16 @@ class MainTabBarController: UITabBarController {
     }
 
     @IBAction func onRefresh(_ sender: Any) {
-        viewModel.refreshStudentLocations.apply(true).start()
+        HUD.show(.progress)
+        viewModel.refreshStudentLocations.apply(true).startWithResult { (result) in
+            switch result {
+            case .success(_):
+                HUD.flash(.success)
+            case .failure(.producerFailed(let error)):
+                HUD.flash(.label(error.localizedError), delay: 0.8)
+            case .failure(.disabled):
+                HUD.flash(.label(Strings.Network.errorActionDisabled), delay: 0.8)
+            }
+        }
     }
 }

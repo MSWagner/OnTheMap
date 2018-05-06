@@ -73,8 +73,10 @@ class AddLocationViewController: UIViewController, KeyboardNotificationProtocol,
                         mapViewController.viewModel = self.viewModel
                         self.navigationController?.pushViewController(mapViewController, animated: true)
                     })
-                case .failure(let error):
-                    HUD.flash(.label(error.localizedDescription), delay: 0.7)
+                case .failure(.producerFailed(let error)):
+                    HUD.flash(.label(error.localizedError), delay: 0.8)
+                case .failure(.disabled):
+                    HUD.flash(.label(Strings.Network.errorActionDisabled), delay: 0.8)
                 }
             }
         } else {

@@ -42,7 +42,7 @@ class LocationViewModel {
             let skip: Int? = shouldStartNew ? nil : self._studentViewModels.value.count
 
             return APIClient
-                .request(.getStudentLocations(limit: 100, skip: skip, order: nil), type: StudentInformations.self)
+                .request(.getStudentLocations(limit: 100, skip: skip, order: "-updatedAt"), type: StudentInformations.self)
                 .map { $0.results }
                 .on(value: { [weak self] (studentInformations) in
                     guard let `self` = self else { return }

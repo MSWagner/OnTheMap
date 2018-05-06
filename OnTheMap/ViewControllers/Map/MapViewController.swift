@@ -131,11 +131,11 @@ extension MapViewController: MKMapViewDelegate {
         if let mediaUrl = mediaUrl, let url =  URL(string: mediaUrl) {
             UIApplication.shared.open(url, options: [:], completionHandler: { (hasOpened) in
                 if !hasOpened {
-                    HUD.flash(.label(Strings.StudentInformation.errorMediaUrl), delay: 0.4)
+                    HUD.flash(.label(Strings.StudentInformation.errorMediaUrl), delay: 0.8)
                 }
             })
         } else {
-            HUD.flash(.label(Strings.StudentInformation.errorMediaUrl), delay: 0.4)
+            HUD.flash(.label(Strings.StudentInformation.errorMediaUrl), delay: 0.8)
         }
     }
 }

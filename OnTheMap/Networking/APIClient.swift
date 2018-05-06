@@ -32,8 +32,6 @@ class APIClient {
                 return session.reactive
                     .data(with: target.request)
                     .retry(upTo: 2)
-//                    .observe(on: QueueScheduler())
-//                    .map { _ in () }
                     .mapError { $0.toAPIError() }
                     .observe(on: UIScheduler())
         }
@@ -61,6 +59,8 @@ class APIClient {
                                 let range = Range(5..<data.count)
                                 tempData = data.subdata(in: range)
                             }
+
+                            print("[Network Response Body]: \(String(data: tempData, encoding: .utf8)!))")
 
                             let decoder = JSONDecoder()
                             decoder.dateDecodingStrategy = .formatted(Formatters.isoDateFormatter)
